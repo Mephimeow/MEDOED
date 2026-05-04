@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./src/backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dara:./data
+    environment:
+      - DB_PATH=/data/events.db
+    restart: unless-stopped
+
+  agent:
+    build: 
+      context: ./src/agent
+      dockerfile: Dockerfile
+    network_mode: "host"
+    privileged: true
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+    environment:
+      - BACKEND_URL = http://backend:8080
+    depends_on:
+      - backend
+    restart: unless-stopped
