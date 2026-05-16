@@ -1,16 +1,33 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=medoed
+      - POSTGRES_PASSWORD=medoed_secret
+      - POSTGRES_DB=medoed
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/backend/migrations:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+
   backend:
     build:
       context: ./src/backend
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    volumes:
-      - ./dara:./data
     environment:
-      - DB_PATH=/data/events.db
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=medoed
+      - DB_PASSWORD=medoed_secret
+      - DB_NAME=medoed
+    depends_on:
+      - postgres
     restart: unless-stopped
 
   agent:
@@ -23,7 +40,8 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
     environment:
-      - BACKEND_URL = http://backend:8080
-    depends_on:
-      - backend
+      - BACKEND_URL=http://127.0.0.1:8080
     restart: unless-stopped
+
+volumes:
+  postgres_data:

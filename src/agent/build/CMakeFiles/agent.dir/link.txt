@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/agent.dir/link.d CMakeFiles/agent.dir/src/main.cpp.o CMakeFiles/agent.dir/src/logger.cpp.o CMakeFiles/agent.dir/src/heartbeat.cpp.o CMakeFiles/agent.dir/src/event_collector.cpp.o -o agent  -lcurl -lpthread

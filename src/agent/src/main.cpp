@@ -21,14 +21,14 @@ std::string get_backend_url() {
     if (env) {
         return std::string(env);
     }
-    return "http://localhost:8080";
+    return "http://127.0.0.1:8080";
 }
 
 int main() {
     signal(SIGINT, signal_handler);
     signal(SIGTERM, signal_handler);
 
-    log_info("EDR Agent starting...");
+    log_info("MEDOED EDR Agent starting...");
     
     std::string backend_url = get_backend_url();
     log_info("Backend URL: " + backend_url);
@@ -36,11 +36,16 @@ int main() {
     Heartbeater heartbeater(backend_url);
     EventCollector collector(backend_url);
 
-    std::thread heartbeat_thread([&heartbeater]() {
+    std::thread heartbeat_thread([&heartbeater, &collector]() {
         heartbeater.start();
+        collector.set_agent_id(heartbeater.get_agent_id());
     });
 
-    std::thread collector_thread([&collector]() {
+    std::thread collector_thread([&collector, &heartbeater]() {
+        while (heartbeater.get_agent_id().empty() && g_running) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+        collector.set_agent_id(heartbeater.get_agent_id());
         collector.start();
     });
 
