@@ -22,7 +22,7 @@ std::string get_hostname() {
 
 std::string get_os_info() {
     std::ifstream os_release("/etc/os-release");
-    std::string line, name, version;
+    std::string line;
     while (std::getline(os_release, line)) {
         if (line.find("PRETTY_NAME=") == 0) {
             size_t pos = line.find('=');
@@ -55,8 +55,8 @@ std::string get_ip_address() {
         if (local_address.length() == 8) {
             unsigned int ip = std::stoul(local_address, nullptr, 16);
             char buf[32];
-            snprintf(buf, sizeof(buf), "%d.%d.%d.%d",
-                ip & 0xFF, (ip >> 8) & 0xFF, (ip >> 16) & 0xFF, (ip >> 24) & 0xFF);
+            snprintf(buf, sizeof(buf), "%u.%u.%u.%u",
+                (ip >> 24) & 0xFF, (ip >> 16) & 0xFF, (ip >> 8) & 0xFF, ip & 0xFF);
             return std::string(buf);
         }
     }
@@ -84,6 +84,10 @@ void Heartbeater::start() {
 void Heartbeater::stop() {
     running_ = false;
     log_info("Heartbeater stopped");
+}
+
+bool Heartbeater::is_running() const {
+    return running_;
 }
 
 void Heartbeater::register_agent() {

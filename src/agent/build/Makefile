@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /home/mephi/work/MEDOED/src/agent/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -129,12 +139,26 @@ agent/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/build
 .PHONY : agent/fast
 
+#=============================================================================
+# Target rules for targets named agent_tests
+
+# Build rule for target.
+agent_tests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 agent_tests
+.PHONY : agent_tests
+
+# fast build rule for target.
+agent_tests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/build
+.PHONY : agent_tests/fast
+
 src/event_collector.o: src/event_collector.cpp.o
 .PHONY : src/event_collector.o
 
 # target to build an object file
 src/event_collector.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/event_collector.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/event_collector.cpp.o
 .PHONY : src/event_collector.cpp.o
 
 src/event_collector.i: src/event_collector.cpp.i
@@ -143,6 +167,7 @@ src/event_collector.i: src/event_collector.cpp.i
 # target to preprocess a source file
 src/event_collector.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/event_collector.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/event_collector.cpp.i
 .PHONY : src/event_collector.cpp.i
 
 src/event_collector.s: src/event_collector.cpp.s
@@ -151,6 +176,7 @@ src/event_collector.s: src/event_collector.cpp.s
 # target to generate assembly for a file
 src/event_collector.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/event_collector.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/event_collector.cpp.s
 .PHONY : src/event_collector.cpp.s
 
 src/heartbeat.o: src/heartbeat.cpp.o
@@ -159,6 +185,7 @@ src/heartbeat.o: src/heartbeat.cpp.o
 # target to build an object file
 src/heartbeat.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/heartbeat.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o
 .PHONY : src/heartbeat.cpp.o
 
 src/heartbeat.i: src/heartbeat.cpp.i
@@ -167,6 +194,7 @@ src/heartbeat.i: src/heartbeat.cpp.i
 # target to preprocess a source file
 src/heartbeat.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/heartbeat.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/heartbeat.cpp.i
 .PHONY : src/heartbeat.cpp.i
 
 src/heartbeat.s: src/heartbeat.cpp.s
@@ -175,6 +203,7 @@ src/heartbeat.s: src/heartbeat.cpp.s
 # target to generate assembly for a file
 src/heartbeat.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/heartbeat.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/heartbeat.cpp.s
 .PHONY : src/heartbeat.cpp.s
 
 src/logger.o: src/logger.cpp.o
@@ -183,6 +212,7 @@ src/logger.o: src/logger.cpp.o
 # target to build an object file
 src/logger.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/logger.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/logger.cpp.o
 .PHONY : src/logger.cpp.o
 
 src/logger.i: src/logger.cpp.i
@@ -191,6 +221,7 @@ src/logger.i: src/logger.cpp.i
 # target to preprocess a source file
 src/logger.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/logger.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/logger.cpp.i
 .PHONY : src/logger.cpp.i
 
 src/logger.s: src/logger.cpp.s
@@ -199,6 +230,7 @@ src/logger.s: src/logger.cpp.s
 # target to generate assembly for a file
 src/logger.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/logger.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/logger.cpp.s
 .PHONY : src/logger.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -225,6 +257,150 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+tests/event_collector_test.o: tests/event_collector_test.cpp.o
+.PHONY : tests/event_collector_test.o
+
+# target to build an object file
+tests/event_collector_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/event_collector_test.cpp.o
+.PHONY : tests/event_collector_test.cpp.o
+
+tests/event_collector_test.i: tests/event_collector_test.cpp.i
+.PHONY : tests/event_collector_test.i
+
+# target to preprocess a source file
+tests/event_collector_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/event_collector_test.cpp.i
+.PHONY : tests/event_collector_test.cpp.i
+
+tests/event_collector_test.s: tests/event_collector_test.cpp.s
+.PHONY : tests/event_collector_test.s
+
+# target to generate assembly for a file
+tests/event_collector_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/event_collector_test.cpp.s
+.PHONY : tests/event_collector_test.cpp.s
+
+tests/heartbeat_test.o: tests/heartbeat_test.cpp.o
+.PHONY : tests/heartbeat_test.o
+
+# target to build an object file
+tests/heartbeat_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/heartbeat_test.cpp.o
+.PHONY : tests/heartbeat_test.cpp.o
+
+tests/heartbeat_test.i: tests/heartbeat_test.cpp.i
+.PHONY : tests/heartbeat_test.i
+
+# target to preprocess a source file
+tests/heartbeat_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/heartbeat_test.cpp.i
+.PHONY : tests/heartbeat_test.cpp.i
+
+tests/heartbeat_test.s: tests/heartbeat_test.cpp.s
+.PHONY : tests/heartbeat_test.s
+
+# target to generate assembly for a file
+tests/heartbeat_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/heartbeat_test.cpp.s
+.PHONY : tests/heartbeat_test.cpp.s
+
+tests/json_test.o: tests/json_test.cpp.o
+.PHONY : tests/json_test.o
+
+# target to build an object file
+tests/json_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/json_test.cpp.o
+.PHONY : tests/json_test.cpp.o
+
+tests/json_test.i: tests/json_test.cpp.i
+.PHONY : tests/json_test.i
+
+# target to preprocess a source file
+tests/json_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/json_test.cpp.i
+.PHONY : tests/json_test.cpp.i
+
+tests/json_test.s: tests/json_test.cpp.s
+.PHONY : tests/json_test.s
+
+# target to generate assembly for a file
+tests/json_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/json_test.cpp.s
+.PHONY : tests/json_test.cpp.s
+
+tests/logger_test.o: tests/logger_test.cpp.o
+.PHONY : tests/logger_test.o
+
+# target to build an object file
+tests/logger_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/logger_test.cpp.o
+.PHONY : tests/logger_test.cpp.o
+
+tests/logger_test.i: tests/logger_test.cpp.i
+.PHONY : tests/logger_test.i
+
+# target to preprocess a source file
+tests/logger_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/logger_test.cpp.i
+.PHONY : tests/logger_test.cpp.i
+
+tests/logger_test.s: tests/logger_test.cpp.s
+.PHONY : tests/logger_test.s
+
+# target to generate assembly for a file
+tests/logger_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/logger_test.cpp.s
+.PHONY : tests/logger_test.cpp.s
+
+tests/main_test.o: tests/main_test.cpp.o
+.PHONY : tests/main_test.o
+
+# target to build an object file
+tests/main_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/main_test.cpp.o
+.PHONY : tests/main_test.cpp.o
+
+tests/main_test.i: tests/main_test.cpp.i
+.PHONY : tests/main_test.i
+
+# target to preprocess a source file
+tests/main_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/main_test.cpp.i
+.PHONY : tests/main_test.cpp.i
+
+tests/main_test.s: tests/main_test.cpp.s
+.PHONY : tests/main_test.s
+
+# target to generate assembly for a file
+tests/main_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/main_test.cpp.s
+.PHONY : tests/main_test.cpp.s
+
+tests/system_test.o: tests/system_test.cpp.o
+.PHONY : tests/system_test.o
+
+# target to build an object file
+tests/system_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/system_test.cpp.o
+.PHONY : tests/system_test.cpp.o
+
+tests/system_test.i: tests/system_test.cpp.i
+.PHONY : tests/system_test.i
+
+# target to preprocess a source file
+tests/system_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/system_test.cpp.i
+.PHONY : tests/system_test.cpp.i
+
+tests/system_test.s: tests/system_test.cpp.s
+.PHONY : tests/system_test.s
+
+# target to generate assembly for a file
+tests/system_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/system_test.cpp.s
+.PHONY : tests/system_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -233,7 +409,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... agent"
+	@echo "... agent_tests"
 	@echo "... src/event_collector.o"
 	@echo "... src/event_collector.i"
 	@echo "... src/event_collector.s"
@@ -246,6 +424,24 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... tests/event_collector_test.o"
+	@echo "... tests/event_collector_test.i"
+	@echo "... tests/event_collector_test.s"
+	@echo "... tests/heartbeat_test.o"
+	@echo "... tests/heartbeat_test.i"
+	@echo "... tests/heartbeat_test.s"
+	@echo "... tests/json_test.o"
+	@echo "... tests/json_test.i"
+	@echo "... tests/json_test.s"
+	@echo "... tests/logger_test.o"
+	@echo "... tests/logger_test.i"
+	@echo "... tests/logger_test.s"
+	@echo "... tests/main_test.o"
+	@echo "... tests/main_test.i"
+	@echo "... tests/main_test.s"
+	@echo "... tests/system_test.o"
+	@echo "... tests/system_test.i"
+	@echo "... tests/system_test.s"
 .PHONY : help
 
 

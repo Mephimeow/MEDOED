@@ -73,6 +73,10 @@ void EventCollector::stop() {
     log_info("EventCollector stopped");
 }
 
+bool EventCollector::is_running() const {
+    return running_;
+}
+
 void EventCollector::send_event(const std::string& json_payload) {
     if (agent_id_.empty()) {
         log_error("Cannot send event: agent not registered");
@@ -140,7 +144,7 @@ void EventCollector::collect_process_events(const std::string& hostname) {
             
             process_count++;
             
-            std::string suspicious_procs[] = {
+            const std::string suspicious_procs[] = {
                 "nc", "netcat", "ncat", "socat",
                 "python", "perl", "ruby", "php",
                 "bash", "sh", "zsh", "fish",

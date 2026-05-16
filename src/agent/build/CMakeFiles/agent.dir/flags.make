@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/mephi/work/MEDOED/src/agent/include
+CXX_INCLUDES = -I/home/mephi/work/MEDOED/src/agent/include -I/home/mephi/work/MEDOED/src/agent/tests
 
 CXX_FLAGS = -std=gnu++17
 
