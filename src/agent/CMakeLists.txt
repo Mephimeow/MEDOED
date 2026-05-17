@@ -13,6 +13,7 @@ add_executable(agent
     src/logger.cpp
     src/heartbeat.cpp
     src/event_collector.cpp
+    src/config.cpp
 )
 
 target_link_libraries(agent curl pthread)
@@ -26,9 +27,11 @@ add_executable(agent_tests
     tests/event_collector_test.cpp
     tests/json_test.cpp
     tests/system_test.cpp
+    tests/config_test.cpp
     src/logger.cpp
     src/heartbeat.cpp
     src/event_collector.cpp
+    src/config.cpp
 )
 
 target_link_libraries(agent_tests curl pthread)

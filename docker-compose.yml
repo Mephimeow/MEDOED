@@ -13,6 +13,8 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./src/backend/migrations:/docker-entrypoint-initdb.d
     restart: unless-stopped
+    networks:
+      - medoed-net
 
   backend:
     build:
@@ -26,22 +28,30 @@ services:
       - DB_USER=medoed
       - DB_PASSWORD=medoed_secret
       - DB_NAME=medoed
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=8080
     depends_on:
       - postgres
     restart: unless-stopped
+    networks:
+      - medoed-net
+    volumes:
+      - ./src/backend/config.json:/app/config.json:ro
 
   agent:
     build: 
       context: ./src/agent
       dockerfile: Dockerfile
-    network_mode: "host"
+    network_mode: host
     privileged: true
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
+      - ./src/agent/config.json:/etc/medoed/agent.json:ro
     environment:
-      - BACKEND_URL=http://127.0.0.1:8080
+      - AGENT_CONFIG_PATH=/etc/medoed/agent.json
     restart: unless-stopped
 
-volumes:
-  postgres_data:
+networks:
+  medoed-net:
+    driver: bridge

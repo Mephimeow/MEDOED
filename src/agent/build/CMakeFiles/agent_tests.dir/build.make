@@ -156,10 +156,24 @@ CMakeFiles/agent_tests.dir/tests/system_test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/agent_tests.dir/tests/system_test.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mephi/work/MEDOED/src/agent/tests/system_test.cpp -o CMakeFiles/agent_tests.dir/tests/system_test.cpp.s
 
+CMakeFiles/agent_tests.dir/tests/config_test.cpp.o: CMakeFiles/agent_tests.dir/flags.make
+CMakeFiles/agent_tests.dir/tests/config_test.cpp.o: /home/mephi/work/MEDOED/src/agent/tests/config_test.cpp
+CMakeFiles/agent_tests.dir/tests/config_test.cpp.o: CMakeFiles/agent_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mephi/work/MEDOED/src/agent/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/agent_tests.dir/tests/config_test.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/agent_tests.dir/tests/config_test.cpp.o -MF CMakeFiles/agent_tests.dir/tests/config_test.cpp.o.d -o CMakeFiles/agent_tests.dir/tests/config_test.cpp.o -c /home/mephi/work/MEDOED/src/agent/tests/config_test.cpp
+
+CMakeFiles/agent_tests.dir/tests/config_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/agent_tests.dir/tests/config_test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mephi/work/MEDOED/src/agent/tests/config_test.cpp > CMakeFiles/agent_tests.dir/tests/config_test.cpp.i
+
+CMakeFiles/agent_tests.dir/tests/config_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/agent_tests.dir/tests/config_test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mephi/work/MEDOED/src/agent/tests/config_test.cpp -o CMakeFiles/agent_tests.dir/tests/config_test.cpp.s
+
 CMakeFiles/agent_tests.dir/src/logger.cpp.o: CMakeFiles/agent_tests.dir/flags.make
 CMakeFiles/agent_tests.dir/src/logger.cpp.o: /home/mephi/work/MEDOED/src/agent/src/logger.cpp
 CMakeFiles/agent_tests.dir/src/logger.cpp.o: CMakeFiles/agent_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mephi/work/MEDOED/src/agent/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/agent_tests.dir/src/logger.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mephi/work/MEDOED/src/agent/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/agent_tests.dir/src/logger.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/agent_tests.dir/src/logger.cpp.o -MF CMakeFiles/agent_tests.dir/src/logger.cpp.o.d -o CMakeFiles/agent_tests.dir/src/logger.cpp.o -c /home/mephi/work/MEDOED/src/agent/src/logger.cpp
 
 CMakeFiles/agent_tests.dir/src/logger.cpp.i: cmake_force
@@ -173,7 +187,7 @@ CMakeFiles/agent_tests.dir/src/logger.cpp.s: cmake_force
 CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o: CMakeFiles/agent_tests.dir/flags.make
 CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o: /home/mephi/work/MEDOED/src/agent/src/heartbeat.cpp
 CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o: CMakeFiles/agent_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mephi/work/MEDOED/src/agent/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mephi/work/MEDOED/src/agent/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o -MF CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o.d -o CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o -c /home/mephi/work/MEDOED/src/agent/src/heartbeat.cpp
 
 CMakeFiles/agent_tests.dir/src/heartbeat.cpp.i: cmake_force
@@ -187,7 +201,7 @@ CMakeFiles/agent_tests.dir/src/heartbeat.cpp.s: cmake_force
 CMakeFiles/agent_tests.dir/src/event_collector.cpp.o: CMakeFiles/agent_tests.dir/flags.make
 CMakeFiles/agent_tests.dir/src/event_collector.cpp.o: /home/mephi/work/MEDOED/src/agent/src/event_collector.cpp
 CMakeFiles/agent_tests.dir/src/event_collector.cpp.o: CMakeFiles/agent_tests.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mephi/work/MEDOED/src/agent/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/agent_tests.dir/src/event_collector.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mephi/work/MEDOED/src/agent/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/agent_tests.dir/src/event_collector.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/agent_tests.dir/src/event_collector.cpp.o -MF CMakeFiles/agent_tests.dir/src/event_collector.cpp.o.d -o CMakeFiles/agent_tests.dir/src/event_collector.cpp.o -c /home/mephi/work/MEDOED/src/agent/src/event_collector.cpp
 
 CMakeFiles/agent_tests.dir/src/event_collector.cpp.i: cmake_force
@@ -198,6 +212,20 @@ CMakeFiles/agent_tests.dir/src/event_collector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/agent_tests.dir/src/event_collector.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mephi/work/MEDOED/src/agent/src/event_collector.cpp -o CMakeFiles/agent_tests.dir/src/event_collector.cpp.s
 
+CMakeFiles/agent_tests.dir/src/config.cpp.o: CMakeFiles/agent_tests.dir/flags.make
+CMakeFiles/agent_tests.dir/src/config.cpp.o: /home/mephi/work/MEDOED/src/agent/src/config.cpp
+CMakeFiles/agent_tests.dir/src/config.cpp.o: CMakeFiles/agent_tests.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/mephi/work/MEDOED/src/agent/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/agent_tests.dir/src/config.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/agent_tests.dir/src/config.cpp.o -MF CMakeFiles/agent_tests.dir/src/config.cpp.o.d -o CMakeFiles/agent_tests.dir/src/config.cpp.o -c /home/mephi/work/MEDOED/src/agent/src/config.cpp
+
+CMakeFiles/agent_tests.dir/src/config.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/agent_tests.dir/src/config.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/mephi/work/MEDOED/src/agent/src/config.cpp > CMakeFiles/agent_tests.dir/src/config.cpp.i
+
+CMakeFiles/agent_tests.dir/src/config.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/agent_tests.dir/src/config.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/mephi/work/MEDOED/src/agent/src/config.cpp -o CMakeFiles/agent_tests.dir/src/config.cpp.s
+
 # Object files for target agent_tests
 agent_tests_OBJECTS = \
 "CMakeFiles/agent_tests.dir/tests/main_test.cpp.o" \
@@ -206,9 +234,11 @@ agent_tests_OBJECTS = \
 "CMakeFiles/agent_tests.dir/tests/event_collector_test.cpp.o" \
 "CMakeFiles/agent_tests.dir/tests/json_test.cpp.o" \
 "CMakeFiles/agent_tests.dir/tests/system_test.cpp.o" \
+"CMakeFiles/agent_tests.dir/tests/config_test.cpp.o" \
 "CMakeFiles/agent_tests.dir/src/logger.cpp.o" \
 "CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o" \
-"CMakeFiles/agent_tests.dir/src/event_collector.cpp.o"
+"CMakeFiles/agent_tests.dir/src/event_collector.cpp.o" \
+"CMakeFiles/agent_tests.dir/src/config.cpp.o"
 
 # External object files for target agent_tests
 agent_tests_EXTERNAL_OBJECTS =
@@ -219,13 +249,15 @@ agent_tests: CMakeFiles/agent_tests.dir/tests/heartbeat_test.cpp.o
 agent_tests: CMakeFiles/agent_tests.dir/tests/event_collector_test.cpp.o
 agent_tests: CMakeFiles/agent_tests.dir/tests/json_test.cpp.o
 agent_tests: CMakeFiles/agent_tests.dir/tests/system_test.cpp.o
+agent_tests: CMakeFiles/agent_tests.dir/tests/config_test.cpp.o
 agent_tests: CMakeFiles/agent_tests.dir/src/logger.cpp.o
 agent_tests: CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o
 agent_tests: CMakeFiles/agent_tests.dir/src/event_collector.cpp.o
+agent_tests: CMakeFiles/agent_tests.dir/src/config.cpp.o
 agent_tests: CMakeFiles/agent_tests.dir/build.make
 agent_tests: CMakeFiles/agent_tests.dir/compiler_depend.ts
 agent_tests: CMakeFiles/agent_tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mephi/work/MEDOED/src/agent/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable agent_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/mephi/work/MEDOED/src/agent/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable agent_tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/agent_tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

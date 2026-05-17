@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/agent.dir/link.d"
+  "CMakeFiles/agent.dir/src/config.cpp.o"
+  "CMakeFiles/agent.dir/src/config.cpp.o.d"
   "CMakeFiles/agent.dir/src/event_collector.cpp.o"
   "CMakeFiles/agent.dir/src/event_collector.cpp.o.d"
   "CMakeFiles/agent.dir/src/heartbeat.cpp.o"

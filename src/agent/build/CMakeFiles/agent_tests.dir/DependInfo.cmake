@@ -8,9 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/mephi/work/MEDOED/src/agent/src/config.cpp" "CMakeFiles/agent_tests.dir/src/config.cpp.o" "gcc" "CMakeFiles/agent_tests.dir/src/config.cpp.o.d"
   "/home/mephi/work/MEDOED/src/agent/src/event_collector.cpp" "CMakeFiles/agent_tests.dir/src/event_collector.cpp.o" "gcc" "CMakeFiles/agent_tests.dir/src/event_collector.cpp.o.d"
   "/home/mephi/work/MEDOED/src/agent/src/heartbeat.cpp" "CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o" "gcc" "CMakeFiles/agent_tests.dir/src/heartbeat.cpp.o.d"
   "/home/mephi/work/MEDOED/src/agent/src/logger.cpp" "CMakeFiles/agent_tests.dir/src/logger.cpp.o" "gcc" "CMakeFiles/agent_tests.dir/src/logger.cpp.o.d"
+  "/home/mephi/work/MEDOED/src/agent/tests/config_test.cpp" "CMakeFiles/agent_tests.dir/tests/config_test.cpp.o" "gcc" "CMakeFiles/agent_tests.dir/tests/config_test.cpp.o.d"
   "/home/mephi/work/MEDOED/src/agent/tests/event_collector_test.cpp" "CMakeFiles/agent_tests.dir/tests/event_collector_test.cpp.o" "gcc" "CMakeFiles/agent_tests.dir/tests/event_collector_test.cpp.o.d"
   "/home/mephi/work/MEDOED/src/agent/tests/heartbeat_test.cpp" "CMakeFiles/agent_tests.dir/tests/heartbeat_test.cpp.o" "gcc" "CMakeFiles/agent_tests.dir/tests/heartbeat_test.cpp.o.d"
   "/home/mephi/work/MEDOED/src/agent/tests/json_test.cpp" "CMakeFiles/agent_tests.dir/tests/json_test.cpp.o" "gcc" "CMakeFiles/agent_tests.dir/tests/json_test.cpp.o.d"

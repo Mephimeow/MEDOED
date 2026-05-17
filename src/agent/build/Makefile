@@ -152,6 +152,33 @@ agent_tests/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/build
 .PHONY : agent_tests/fast
 
+src/config.o: src/config.cpp.o
+.PHONY : src/config.o
+
+# target to build an object file
+src/config.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/config.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/config.cpp.o
+.PHONY : src/config.cpp.o
+
+src/config.i: src/config.cpp.i
+.PHONY : src/config.i
+
+# target to preprocess a source file
+src/config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/config.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/config.cpp.i
+.PHONY : src/config.cpp.i
+
+src/config.s: src/config.cpp.s
+.PHONY : src/config.s
+
+# target to generate assembly for a file
+src/config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/config.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/src/config.cpp.s
+.PHONY : src/config.cpp.s
+
 src/event_collector.o: src/event_collector.cpp.o
 .PHONY : src/event_collector.o
 
@@ -256,6 +283,30 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent.dir/build.make CMakeFiles/agent.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+tests/config_test.o: tests/config_test.cpp.o
+.PHONY : tests/config_test.o
+
+# target to build an object file
+tests/config_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/config_test.cpp.o
+.PHONY : tests/config_test.cpp.o
+
+tests/config_test.i: tests/config_test.cpp.i
+.PHONY : tests/config_test.i
+
+# target to preprocess a source file
+tests/config_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/config_test.cpp.i
+.PHONY : tests/config_test.cpp.i
+
+tests/config_test.s: tests/config_test.cpp.s
+.PHONY : tests/config_test.s
+
+# target to generate assembly for a file
+tests/config_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_tests.dir/build.make CMakeFiles/agent_tests.dir/tests/config_test.cpp.s
+.PHONY : tests/config_test.cpp.s
 
 tests/event_collector_test.o: tests/event_collector_test.cpp.o
 .PHONY : tests/event_collector_test.o
@@ -412,6 +463,9 @@ help:
 	@echo "... test"
 	@echo "... agent"
 	@echo "... agent_tests"
+	@echo "... src/config.o"
+	@echo "... src/config.i"
+	@echo "... src/config.s"
 	@echo "... src/event_collector.o"
 	@echo "... src/event_collector.i"
 	@echo "... src/event_collector.s"
@@ -424,6 +478,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... tests/config_test.o"
+	@echo "... tests/config_test.i"
+	@echo "... tests/config_test.s"
 	@echo "... tests/event_collector_test.o"
 	@echo "... tests/event_collector_test.i"
 	@echo "... tests/event_collector_test.s"

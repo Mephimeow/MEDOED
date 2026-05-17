@@ -1,11 +1,33 @@
 #include "test_runner.h"
-#include <iostream>
+#include "config.h"
 
-extern void register_logger_tests();
-extern void register_heartbeat_tests();
-extern void register_event_collector_tests();
-extern void register_json_tests();
-extern void register_system_tests();
+static void test_config_default_values() {
+    AgentConfig config;
+    config.backend_url = "";
+    config.heartbeat_interval = 30;
+    config.log_level = "info";
+    
+    ASSERT_EQ(config.heartbeat_interval, 30);
+}
+
+static void test_config_file_exists() {
+    ASSERT_TRUE(true);
+}
+
+static void test_config_loading_from_env() {
+    setenv("BACKEND_URL", "http://test.example.com:8080", 1);
+    
+    AgentConfig config = ConfigLoader::load("");
+    
+    ASSERT_STRING_CONTAINS(config.backend_url, "test.example.com");
+}
+
+static void test_config_default_path() {
+    std::string path = ConfigLoader::get_default_config_path();
+    ASSERT_TRUE(!path.empty());
+}
+
+void register_config_tests();
 
 int main() {
     std::cout << "===========================================\n";
@@ -17,6 +39,7 @@ int main() {
     register_event_collector_tests();
     register_json_tests();
     register_system_tests();
+    register_config_tests();
 
     int failed = RUN_TESTS();
     

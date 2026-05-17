@@ -4,6 +4,7 @@
 #include <chrono>
 #include <atomic>
 #include "logger.h"
+#include "config.h"
 #include "heartbeat.h"
 #include "event_collector.h"
 
@@ -16,25 +17,23 @@ void signal_handler(int signal) {
     }
 }
 
-std::string get_backend_url() {
-    const char* env = std::getenv("BACKEND_URL");
-    if (env) {
-        return std::string(env);
-    }
-    return "http://127.0.0.1:8080";
-}
-
-int main() {
+int main(int argc, char* argv[]) {
     signal(SIGINT, signal_handler);
     signal(SIGTERM, signal_handler);
 
     log_info("MEDOED EDR Agent starting...");
     
-    std::string backend_url = get_backend_url();
-    log_info("Backend URL: " + backend_url);
+    std::string config_path;
+    if (argc > 1) {
+        config_path = argv[1];
+    }
+    
+    AgentConfig config = ConfigLoader::load(config_path);
+    log_info("Backend URL: " + config.backend_url);
 
-    Heartbeater heartbeater(backend_url);
-    EventCollector collector(backend_url);
+    Heartbeater heartbeater(config.backend_url);
+    heartbeater.set_heartbeat_interval(config.heartbeat_interval);
+    EventCollector collector(config.backend_url);
 
     std::thread heartbeat_thread([&heartbeater, &collector]() {
         heartbeater.start();
