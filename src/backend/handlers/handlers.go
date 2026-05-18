@@ -256,6 +256,8 @@ func CreateEvent(c *gin.Context) {
 
 	json.Unmarshal(payloadJSON, &event.Payload)
 	c.JSON(http.StatusCreated, event)
+
+	go CreateAlertsForEvent(event, DefaultRuleConfig)
 }
 
 func ListEvents(c *gin.Context) {

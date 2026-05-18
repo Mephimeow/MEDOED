@@ -159,8 +159,6 @@ func TestValidateUUID_Invalid(t *testing.T) {
 	}
 }
 
-
-
 func TestGetEvent_DBError(t *testing.T) {
 	DB = nil
 	router := setupTestRouter()

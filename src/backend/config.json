@@ -18,9 +18,15 @@
   },
   "auth": {
     "enabled": false,
-    "api_keys": []
+    "api_keys": ["medoed_secret_key_2024"]
   },
   "logging": {
     "level": "info"
+  },
+  "rules": {
+    "enabled": true,
+    "critical_severity": true,
+    "high_severity": true,
+    "suspicious_process": true
   }
 }

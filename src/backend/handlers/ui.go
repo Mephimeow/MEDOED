@@ -22,25 +22,25 @@ type DashboardStats struct {
 }
 
 type AgentRow struct {
-	Hostname     string
-	IPAddress    string
-	OSInfo       string
+	Hostname      string
+	IPAddress     string
+	OSInfo        string
 	KernelVersion string
-	Status       string
+	Status        string
 	LastHeartbeat string
-	CreatedAt    string
+	CreatedAt     string
 }
 
 type EventRow struct {
-	AgentID      string
-	EventType    string
-	Description  string
-	CreatedAt    string
+	AgentID     string
+	EventType   string
+	Description string
+	CreatedAt   string
 }
 
 type AlertRow struct {
 	AgentID     string
-	Name        string
+	RuleName    string
 	Description string
 	Severity    string
 	Status      string
@@ -90,7 +90,7 @@ func getDashboardData() DashboardData {
 	data.Stats.OfflineAgents = data.Stats.TotalAgents - data.Stats.OnlineAgents
 
 	rows3, err := DB.Query(`
-		SELECT COUNT(*) FROM alerts WHERE status = 'active'
+		SELECT COUNT(*) FROM alerts WHERE status = 'open'
 	`)
 	if err == nil {
 		defer rows3.Close()
@@ -150,11 +150,11 @@ func AgentsPageHandler(c *gin.Context) {
 	tmpl := loadTemplates()
 
 	data := struct {
-		CurrentPage string
-		TotalCount  int
-		OnlineCount int
+		CurrentPage  string
+		TotalCount   int
+		OnlineCount  int
 		OfflineCount int
-		Agents      []AgentRow
+		Agents       []AgentRow
 	}{
 		CurrentPage: "agents",
 		Agents:      []AgentRow{},
@@ -194,8 +194,8 @@ func EventsPageHandler(c *gin.Context) {
 
 	data := struct {
 		CurrentPage string
-		TotalCount   int
-		Events       []EventRow
+		TotalCount  int
+		Events      []EventRow
 	}{
 		CurrentPage: "events",
 		Events:      []EventRow{},
@@ -228,10 +228,10 @@ func AlertsPageHandler(c *gin.Context) {
 	tmpl := loadTemplates()
 
 	data := struct {
-		CurrentPage  string
-		ActiveCount  int
-		TotalCount   int
-		Alerts       []AlertRow
+		CurrentPage string
+		ActiveCount int
+		TotalCount  int
+		Alerts      []AlertRow
 	}{
 		CurrentPage: "alerts",
 		Alerts:      []AlertRow{},
@@ -239,7 +239,7 @@ func AlertsPageHandler(c *gin.Context) {
 
 	if DB != nil {
 		rows, err := DB.Query(`
-			SELECT agent_id, name, description, severity, status, created_at 
+			SELECT agent_id, rule_name, description, severity, status, created_at 
 			FROM alerts 
 			ORDER BY created_at DESC
 		`)
@@ -248,7 +248,7 @@ func AlertsPageHandler(c *gin.Context) {
 			for rows.Next() {
 				var a AlertRow
 				var t time.Time
-				if rows.Scan(&a.AgentID, &a.Name, &a.Description, &a.Severity, &a.Status, &t) == nil {
+				if rows.Scan(&a.AgentID, &a.RuleName, &a.Description, &a.Severity, &a.Status, &t) == nil {
 					a.CreatedAt = t.Format("02.01.2006 15:04")
 					data.Alerts = append(data.Alerts, a)
 					data.TotalCount++

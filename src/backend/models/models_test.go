@@ -55,7 +55,7 @@ func TestEvent_JSON(t *testing.T) {
 		Severity:  "info",
 		Payload: map[string]interface{}{
 			"total_processes": 100,
-			"hostname":         "test-host",
+			"hostname":        "test-host",
 		},
 		Source:      "process_monitor",
 		Description: "Test event",

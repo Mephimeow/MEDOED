@@ -100,6 +100,8 @@ func main() {
 
 	r := gin.Default()
 
+	handlers.InitAuth(cfg.Auth.Enabled, cfg.Auth.APIKeys)
+
 	r.Use(handlers.CORS())
 
 	r.GET("/", handlers.DashboardHandler)
@@ -109,28 +111,32 @@ func main() {
 
 	r.GET("/health", handlers.HealthCheck)
 
-	agents := r.Group("/api/v1/agents")
+	api := r.Group("/api/v1")
+	api.Use(handlers.AuthMiddleware())
 	{
-		agents.POST("/register", handlers.RegisterAgent)
-		agents.POST("/heartbeat", handlers.Heartbeat)
-		agents.GET("", handlers.ListAgents)
-		agents.GET("/:id", handlers.GetAgent)
-		agents.GET("/:id/status", handlers.GetAgentStatus)
-	}
+		agents := api.Group("/agents")
+		{
+			agents.POST("/register", handlers.RegisterAgent)
+			agents.POST("/heartbeat", handlers.Heartbeat)
+			agents.GET("", handlers.ListAgents)
+			agents.GET("/:id", handlers.GetAgent)
+			agents.GET("/:id/status", handlers.GetAgentStatus)
+		}
 
-	events := r.Group("/api/v1/events")
-	{
-		events.POST("", handlers.CreateEvent)
-		events.GET("", handlers.ListEvents)
-		events.GET("/:id", handlers.GetEvent)
-		events.GET("/agent/:agent_id", handlers.GetAgentEvents)
-	}
+		events := api.Group("/events")
+		{
+			events.POST("", handlers.CreateEvent)
+			events.GET("", handlers.ListEvents)
+			events.GET("/:id", handlers.GetEvent)
+			events.GET("/agent/:agent_id", handlers.GetAgentEvents)
+		}
 
-	alerts := r.Group("/api/v1/alerts")
-	{
-		alerts.GET("", handlers.ListAlerts)
-		alerts.GET("/:id", handlers.GetAlert)
-		alerts.PUT("/:id/resolve", handlers.ResolveAlert)
+		alerts := api.Group("/alerts")
+		{
+			alerts.GET("", handlers.ListAlerts)
+			alerts.GET("/:id", handlers.GetAlert)
+			alerts.PUT("/:id/resolve", handlers.ResolveAlert)
+		}
 	}
 
 	bindAddr := fmt.Sprintf("%s:%s", serverHost, serverPort)
