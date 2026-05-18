@@ -1,0 +1,59 @@
+{{define "title"}}Агенты{{end}}
+{{define "content"}}
+<div class="header">
+    <h2>Агенты</h2>
+</div>
+
+<div class="stats">
+    <div class="stat-card">
+        <h3>Всего</h3>
+        <div class="value">{{.TotalCount}}</div>
+    </div>
+    <div class="stat-card online">
+        <h3>Онлайн</h3>
+        <div class="value">{{.OnlineCount}}</div>
+    </div>
+    <div class="stat-card offline">
+        <h3>Офлайн</h3>
+        <div class="value">{{.OfflineCount}}</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Все агенты</div>
+    <div class="card-body">
+        {{if .Agents}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Hostname</th>
+                    <th>IP адрес</th>
+                    <th>ОС</th>
+                    <th>Версия ядра</th>
+                    <th>Статус</th>
+                    <th>Последний heartbeat</th>
+                    <th>Зарегистрирован</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Agents}}
+                <tr>
+                    <td><strong>{{.Hostname}}</strong></td>
+                    <td>{{.IPAddress}}</td>
+                    <td>{{.OSInfo}}</td>
+                    <td>{{.KernelVersion}}</td>
+                    <td>
+                        <span class="status {{.Status}}">{{.Status}}</span>
+                    </td>
+                    <td class="time">{{.LastHeartbeat}}</td>
+                    <td class="time">{{.CreatedAt}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+        {{else}}
+        <div class="empty">Нет зарегистрированных агентов</div>
+        {{end}}
+    </div>
+</div>
+{{end}}

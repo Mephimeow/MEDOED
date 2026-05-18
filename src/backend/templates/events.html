@@ -1,0 +1,51 @@
+{{define "title"}}События{{end}}
+{{define "content"}}
+<div class="header">
+    <h2>События</h2>
+</div>
+
+<div class="stats">
+    <div class="stat-card">
+        <h3>Всего событий</h3>
+        <div class="value">{{.TotalCount}}</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Все события</div>
+    <div class="card-body">
+        {{if .Events}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Время</th>
+                    <th>Агент</th>
+                    <th>Тип</th>
+                    <th>Описание</th>
+                    <th>Данные</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Events}}
+                <tr>
+                    <td class="time">{{.CreatedAt}}</td>
+                    <td><strong>{{.AgentID}}</strong></td>
+                    <td><span class="badge info">{{.EventType}}</span></td>
+                    <td>{{.Description}}</td>
+                    <td>
+                        {{if .Data}}
+                        <code style="font-size: 11px; background: #f5f5f5; padding: 2px 6px; border-radius: 3px;">JSON</code>
+                        {{else}}
+                        —
+                        {{end}}
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+        {{else}}
+        <div class="empty">Нет событий</div>
+        {{end}}
+    </div>
+</div>
+{{end}}

@@ -1,0 +1,86 @@
+{{define "title"}}Dashboard{{end}}
+{{define "content"}}
+<div class="header">
+    <h2>Dashboard</h2>
+    <span class="refresh-info">Обновляется автоматически каждые 30 секунд</span>
+</div>
+
+<div class="stats">
+    <div class="stat-card">
+        <h3>Всего агентов</h3>
+        <div class="value">{{.Stats.TotalAgents}}</div>
+    </div>
+    <div class="stat-card online">
+        <h3>Онлайн</h3>
+        <div class="value">{{.Stats.OnlineAgents}}</div>
+    </div>
+    <div class="stat-card offline">
+        <h3>Офлайн</h3>
+        <div class="value">{{.Stats.OfflineAgents}}</div>
+    </div>
+    <div class="stat-card alert">
+        <h3>Активные алерты</h3>
+        <div class="value">{{.Stats.ActiveAlerts}}</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Последние события</div>
+    <div class="card-body">
+        {{if .RecentEvents}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Время</th>
+                    <th>Агент</th>
+                    <th>Тип</th>
+                    <th>Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .RecentEvents}}
+                <tr>
+                    <td class="time">{{.CreatedAt}}</td>
+                    <td>{{.AgentID}}</td>
+                    <td><span class="badge info">{{.EventType}}</span></td>
+                    <td>{{.Description}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+        {{else}}
+        <div class="empty">Нет событий</div>
+        {{end}}
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Активные агенты</div>
+    <div class="card-body">
+        {{if .ActiveAgents}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Hostname</th>
+                    <th>IP</th>
+                    <th>ОС</th>
+                    <th>Последний heartbeat</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .ActiveAgents}}
+                <tr>
+                    <td><strong>{{.Hostname}}</strong></td>
+                    <td>{{.IPAddress}}</td>
+                    <td>{{.OSInfo}}</td>
+                    <td class="time">{{.LastHeartbeat}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+        {{else}}
+        <div class="empty">Нет активных агентов</div>
+        {{end}}
+    </div>
+</div>
+{{end}}

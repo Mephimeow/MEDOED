@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/Mephimeow/MEDOED/backend/handlers"
@@ -95,11 +96,16 @@ func main() {
 	log.Println("Connected to PostgreSQL database")
 
 	serverHost := getEnvOrDefault("SERVER_HOST", cfg.Server.Host)
-	serverPort := getEnvOrDefault("SERVER_PORT", fmt.Sprintf("%d", cfg.Server.Port))
+	serverPort := getEnvOrDefault("SERVER_PORT", strconv.Itoa(cfg.Server.Port))
 
 	r := gin.Default()
 
 	r.Use(handlers.CORS())
+
+	r.GET("/", handlers.DashboardHandler)
+	r.GET("/agents", handlers.AgentsPageHandler)
+	r.GET("/events", handlers.EventsPageHandler)
+	r.GET("/alerts", handlers.AlertsPageHandler)
 
 	r.GET("/health", handlers.HealthCheck)
 
@@ -127,7 +133,7 @@ func main() {
 		alerts.PUT("/:id/resolve", handlers.ResolveAlert)
 	}
 
-	bindAddr := fmt.Sprintf("%s:%d", serverHost, serverPort)
+	bindAddr := fmt.Sprintf("%s:%s", serverHost, serverPort)
 	server := &http.Server{
 		Addr:         bindAddr,
 		Handler:      r,
